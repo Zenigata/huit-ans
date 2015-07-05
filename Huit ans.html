@@ -1,0 +1,77 @@
+<tw-storydata name="Huit ans" startnode="3" creator="Twine" creator-version="2.0.6" ifid="BFDED0D7-93E7-44D0-8766-9A5E5152A4F8" format="Harlowe" options=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+
+
+
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+
+
+
+</script><tw-passagedata pid="1" name="Pensine" tags="" position="334,203">Huit souvenirs pour huit années de travail et d&#x27;émotions :
+
+ * [[Le week-end ski|Ski : accueil]]
+ * [[L&#x27;entretien de mission|Entretien : accueil]]</tw-passagedata><tw-passagedata pid="2" name="Ski : accueil" tags="ski" position="440,40">(if: $souvenir1 is true) [Vous êtes déjà venu !]
+
+Le week-end de ski organisé par le CE est [toujours]&lt;cl2| un [événement]&lt;cl1|.
+
+(click: ?cl1)[Un événement majeur !]
+(click-replace: ?cl2)[souvent]
+
+(text-style: &quot;shudder&quot;)[shudder]
+(text-style: &quot;superscript&quot;)[superscript]
+(text-style: &quot;blink&quot;)[blink]
+(text-style: &quot;mark&quot;)[mark]
+(text-style: &quot;delete&quot;)[delete]
+(text-style: &quot;outline&quot;)[outline]
+(text-style: &quot;shadow&quot;)[shadow]
+(text-style: &quot;emboss&quot;)[emboss]
+(text-style: &quot;condense&quot;)[condense]
+(text-style: &quot;expand&quot;)[expand]
+(text-style: &quot;blur&quot;)[blur]
+(text-style: &quot;blurrier&quot;)[blurrier]
+(text-style: &quot;smear&quot;)[smear]
+(text-style: &quot;mirror&quot;)[mirror]
+(text-style: &quot;upside-down&quot;)[upside-down]
+(text-style: &quot;fade-in-out&quot;)[fade-in-out]
+(text-style: &quot;rumble&quot;)[rumble]
+(t8n: &quot;pulse&quot;)[pulse]
+
+Et voilà, c&#x27;est la [[fin|Ski: fin]] !</tw-passagedata><tw-passagedata pid="3" name="Accueil" tags="" position="119,197">(set: $souvenir1 to false)
+
+*Bienvenue !*
+
+Je vais à la [[pensine|Pensine]].</tw-passagedata><tw-passagedata pid="4" name="Ski: fin" tags="ski" position="650,216">{
+ (set: $doorClosed to false)
+ (set: $outOfAirTime to 12)
+ (set: $elapsedTime to 0)
+
+ (live: 1000ms)[
+  (if: $doorClosed is true)[ (stop:) ]
+  (else:)[
+   (set: $elapsedTime to (round: time / 1000))
+   (set: $outOfAirTime to $outOfAirTime - $elapsedTime)
+   (replace: ?warning)[
+    (colour: &quot;green&quot;)[You have $outOfAirTime seconds left!]
+   ]
+   (if: $outOfAirTime &lt; 0) [
+    (goto: &quot;Pensine&quot;)
+   ]
+  ]
+ ]
+}
+
+(set: $souvenir1 to true)
+(font: &quot;monospace&quot;)[Fin du souvenir.]
+[(colour: &quot;yellow&quot;)[You have 12 seconds left!]]&lt;warning|
+
+(text-colour: &quot;red&quot;)[Congrats !]
+(colour: &quot;red&quot;)[Votre note : (random: 1, 10)]
+La mienne : (either: 1, 5, 8)
+
+On [[recommence|Pensine]] ?
+
+[Swipe to close]&lt;closeMenu|
+(link: &quot;Bonus&quot;)[Photo à poil]
+
+(mouseover: ?closeMenu)[(replace: ?closeMenu) []]</tw-passagedata><tw-passagedata pid="5" name="Entretien : accueil" tags="entretien" position="334,353">Ah ces fameux entretiens techniques...</tw-passagedata></tw-storydata>
