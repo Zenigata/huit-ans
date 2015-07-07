@@ -1,9 +1,11 @@
-<tw-storydata name="Huit ans" startnode="3" creator="Twine" creator-version="2.0.6" ifid="BFDED0D7-93E7-44D0-8766-9A5E5152A4F8" format="Harlowe" options=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+<tw-storydata name="Huit ans" startnode="6" creator="Twine" creator-version="2.0.8" ifid="BFDED0D7-93E7-44D0-8766-9A5E5152A4F8" format="Harlowe" options=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+
 
 
 
 
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
 
 
 
@@ -14,6 +16,8 @@
  * [[L&#x27;entretien de mission|Entretien : accueil]]</tw-passagedata><tw-passagedata pid="2" name="Ski : accueil" tags="ski" position="440,40">(if: $souvenir1 is true) [Vous êtes déjà venu !]
 
 Le week-end de ski organisé par le CE est [toujours]&lt;cl2| un [événement]&lt;cl1|.
+
+[[C&#x27;est parti !|Ski: début]]
 
 (click: ?cl1)[Un événement majeur !]
 (click-replace: ?cl2)[souvent]
@@ -41,7 +45,7 @@ Et voilà, c&#x27;est la [[fin|Ski: fin]] !</tw-passagedata><tw-passagedata pid=
 
 *Bienvenue !*
 
-Je vais à la [[pensine|Pensine]].</tw-passagedata><tw-passagedata pid="4" name="Ski: fin" tags="ski" position="650,216">{
+Je vais à la [[pensine|Pensine]].</tw-passagedata><tw-passagedata pid="4" name="Ski: fin" tags="ski" position="531,361">{
  (set: $doorClosed to false)
  (set: $outOfAirTime to 12)
  (set: $elapsedTime to 0)
@@ -74,4 +78,39 @@ On [[recommence|Pensine]] ?
 [Swipe to close]&lt;closeMenu|
 (link: &quot;Bonus&quot;)[Photo à poil]
 
-(mouseover: ?closeMenu)[(replace: ?closeMenu) []]</tw-passagedata><tw-passagedata pid="5" name="Entretien : accueil" tags="entretien" position="334,353">Ah ces fameux entretiens techniques...</tw-passagedata></tw-storydata>
+(mouseover: ?closeMenu)[(replace: ?closeMenu) []]</tw-passagedata><tw-passagedata pid="5" name="Entretien : accueil" tags="entretien" position="334,353">Ah ces fameux entretiens techniques...</tw-passagedata><tw-passagedata pid="6" name="Ski: début" tags="ski" position="694,39">(set: $ski_vies to 5)
+(set: $ski_points to 0)
+
+Bonjour.
+
+[[J&#x27;enfourche la luge|Ski: glisse]]</tw-passagedata><tw-passagedata pid="7" name="Ski: glisse" tags="ski" position="874,275">(if: $ski_vies is 0)[(goto:&quot;Ski: mort&quot;)]
+(if: $ski_points is 10)[(goto:&quot;Ski: victoire&quot;)]
+
+Vous avez : (print: $ski_vies) vies.
+
+(display: &quot;Ski: évènement&quot;)</tw-passagedata><tw-passagedata pid="8" name="Ski: mort" tags="ski" position="704,510">Je suis mort.
+
+[[Au revoir|Ski: fin]]</tw-passagedata><tw-passagedata pid="9" name="Ski: victoire" tags="ski" position="704,331">Je suis le premier !
+
+[[Yippie !|Ski: fin]]</tw-passagedata><tw-passagedata pid="10" name="Ski: évènement" tags="ski" position="1188,115">(set: $ski_points to $ski_points + 1)
+
+Une lumière m&#x27;aveugle.
+
+Je fonce [[droit|Ski: droit]] dedans.
+Je me jette sur le [[côté|Ski: côté]].
+Je [[freine|Ski: frein]] de toutes mes forces.
+</tw-passagedata><tw-passagedata pid="11" name="Ski: droit" tags="ski" position="1013,119">Il ne se passe rien.
+
+Je [[continue|Ski: glisse]].</tw-passagedata><tw-passagedata pid="12" name="Ski: frein" tags="ski" position="1118,515">(set: $ski_vies to $ski_vies + 1)
+
+Ah c&#x27;est l&#x27;infirmière qui fait de grands gestes. J&#x27;ai bien besoin de ses sercices, tiens.
+
+vies +1
+
+Je [[continue|Ski: glisse]].</tw-passagedata><tw-passagedata pid="13" name="Ski: côté" tags="ski" position="1051,275">(set: $ski_vies to $ski_vies - 1)
+
+C&#x27;est une dameuse ! J&#x27;ai eu chaud, mais je me suis fait un peu mal en m&#x27;écartant subitement.
+
+vies -1
+
+Je [[continue|Ski: glisse]].</tw-passagedata></tw-storydata>
